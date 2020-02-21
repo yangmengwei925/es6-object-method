@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+                 //es6对象扩展
+      //对象声明
+            var obj = {
+                name:'xiaohong',
+                age:12,
+                jump:function(){
+                    console.log("aa");
+                }
+            };
+            // obj.name; 
+            obj['name'];
+
+        var obj1 = {
+            name:'xiaohong'
+        };
+        var obj2 = {
+            age:12
+        };
+        // console.log(obj1,obj2);  {name: "xiaohong"} {age: 12}
+        console.log({obj1,obj2});
+
+    //es6
+        // 运算符
+        let str = 'hi';
+        let obj3 = {
+            [str] : str,
+            ['a'+'bc'] : 123
+        };
+        obj3[str];  //hi
+        obj3['a'+'bc'];   //123
+        obj3['abc'];//123
+
+        let obj4 = {
+            ['h'+'i'](){
+                return 'hello';
+            }
+        };
+        obj4.hi();
+
+        const obj5 = {
+            method: function(){
+                    return 'hello';
+            }
+        };
+            obj5.method();
+    // 等同
+    const obj5 = {
+        method(){
+             return 'hello';
+        }
+    };
+    obj5.method();
+
+    // 函数
+        function f(x,y){
+            return {x,y}; //{x: 1, y: 2}
+        }
+        //等同
+        function f(x,y){
+            return {x:x,y:y};//{x: 1, y: 2}
+        }
+        f(1,2);
+    
+    //对象的遍历  for...in     
+        var obj6 = {
+            name:'xiaohong',
+            age:12,
+            add:'beijing'
+        };
+        for(var v in obj6){
+            console.log(v);  //name  age  add
+            console.log(obj6[v]); //xiaohong  12  beijing
+        }
+
+        //keys()  values() entries()
+        var obj7 = {
+            name:'xiaohong',
+            age:12,
+            add:'beijing'
+        };
+        Object.values(obj7); //["xiaohong", 12, "beijing"]
+        Object.keys(obj7);  //["name", "age", "add"]
+        Object.getOwnPropertyNames(obj7);//["name", "age", "add"]
+        Reflect.ownKeys(obj7);  //["name", "age", "add"]
+
+    //解构赋值  一一对应
+        //数组中是按照位置去匹配的
+        let [x,y,z] =[1,2,3];
+            x;  //1
+        let [x,y,z] =[2,1,3];
+            x;  //2
+
+        //对象中是按照key去匹配
+         let {x,y} ={x:1,y:2};
+         x //1
+         let {x,y} ={y:2,x:1};
+         x  //1
+
+        // ...arr  扩展运算符
+        let {x,y,...z} = {x:1,y:2,a:3,b:4};
+            x;  //1
+            y;  //2
+            z;  //a:3,b:4
+        
+        // 注意：
+            let {x,y,...z} = {x:1,y:2,a:3,b:4}; //ok
+            let {x,...y,z} = {x:1,y:2,a:3,b:4}; //error
+            let {...x,y,z} = {x:1,y:2,a:3,b:4}; //error
+            let {...x,...y,z} = {x:1,y:2,a:3,b:4}; //error
+        
+            let {...x} = null; //运行错误
+            let {...x} = undefined; //运行错误
+        
+    //拷贝
+     let obj8 = {a:{b:1}};
+     let {...x} = obj8;
+        obj8.a.b=2;   //重新赋值
+        x.a.b;       //2
+        obj8.a.b;    //2
+
+    // new jQuery
+
+    let obj8 = {a:{b:1}};
+     let {...x} = obj8;
+     x;//{a:{b:1}}
+
+
+        let obj9 = {...['a','b','c']};
+        obj9;// {0:'a',1:'b',2:'c'}
+
+        let obj9 = {...{},a:1};
+        obj9;// {a:1}
+
+        let obj9 = {...1};
+        //等同
+        let obj9 = {...Object(1)};
+        obj9;//  
+
+        let obj9 = {...true};
+        //等同
+        let obj9 = {...Object(true)};
+        obj9;// 
+
+        let obj9 = {...undefined};
+        //等同
+        let obj9 = {...Object(undefined)};
+        obj9;//
+
+        let obj9 = {...null};
+        //等同
+        let obj9 = {...Object(null)};
+        obj9;//
+
+        let obj9 = {...'hello'};
+        obj9;//{0: "h", 1: "e", 2: "l", 3: "l", 4: "o"}
+
+
+    // 对象合并
+       //第一种方式
+       let a = {name:'abc'};
+       let b = {age:12};
+        let ab = {...a,...b};
+        ab;//{name: "abc", age: 12}
+
+        //第二种方式：
+        let a = {name:'abc'};
+       let b = {age:12};
+       console.log(Object.assign(a,b)); //{name: "abc", age: 12}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
